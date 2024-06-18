@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ProductList } from "./components/ProductList";
 import { CartItem, Product } from "./utils/types";
+import { ShoppingCart } from "./components/ShoppingCart";
 
 function App() {
   // Manage cart state
@@ -33,6 +34,7 @@ function App() {
       <header className="shadow-md py-4 px-6 flex justify-between">
         <h1 className="text-xl font-bold">Wacky Wonders Emporium</h1>
         {/* Cart Toggle */}
+        <ShoppingCart cartItems={cart} />
       </header>
       <div className="p-8">
         <ProductList addToCart={addToCart} />
