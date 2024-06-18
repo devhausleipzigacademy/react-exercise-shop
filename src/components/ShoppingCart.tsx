@@ -16,7 +16,11 @@ export function ShoppingCart({ cartItems }: Props) {
       <ul>
         {cartItems.map((item) => (
           <li key={item.id}>
-            {item.name} - ${item.price} - {item.quantity}
+            {item.name} - {item.quantity}
+            <span className="font-bold">
+              {` ${item.quantity > 1 ? "pcs" : "pc"}`}
+            </span>
+            : ${(item.price * item.quantity).toFixed(2)}
           </li>
         ))}
       </ul>
