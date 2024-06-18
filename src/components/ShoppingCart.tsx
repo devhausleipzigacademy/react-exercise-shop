@@ -6,9 +6,9 @@ type Props = {
 
 export function ShoppingCart({ cartItems }: Props) {
   /* Variable that is the total price */
-  // iterate over cartItems, and calculate:
-  // item.price * item.quantity
-  // use .reduce()
+  const totalPrice = cartItems.reduce((sum, item) => {
+    return sum + item.price * item.quantity;
+  }, 0);
 
   return (
     <div className="absolute right-0 top-10 shadow-sm bg-white border border-zinc-400 p-4 w-max">
@@ -20,7 +20,9 @@ export function ShoppingCart({ cartItems }: Props) {
           </li>
         ))}
       </ul>
-      {/* Display total price */}
+      <h3 className="border-t border-zinc-400 mt-2">
+        Total Price: ${totalPrice.toFixed(2)}
+      </h3>
     </div>
   );
 }
