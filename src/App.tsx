@@ -2,11 +2,13 @@ import { useState } from "react";
 import { ProductList } from "./components/ProductList";
 import { CartItem, Product } from "./utils/types";
 import { ShoppingCart } from "./components/ShoppingCart";
+import { CartToggle } from "./components/CartToggle";
 
 function App() {
   // Manage cart state
   const [cart, setCart] = useState<CartItem[]>([]);
   // Manage cart visibility
+  const [isCartVisible, setIsCartVisible] = useState(false);
 
   function addToCart(product: Product) {
     const existingItem = cart.find((item) => item.id === product.id);
@@ -29,12 +31,18 @@ function App() {
     }
   }
 
+  function toggleCart() {
+    setIsCartVisible((prevIsCartVisible) => !prevIsCartVisible);
+  }
+
   return (
     <>
       <header className="shadow-md py-4 px-6 flex justify-between">
         <h1 className="text-xl font-bold">Wacky Wonders Emporium</h1>
-        {/* Cart Toggle */}
-        <ShoppingCart cartItems={cart} />
+        <div className="relative">
+          <CartToggle toggleCart={toggleCart} />
+          {isCartVisible ? <ShoppingCart cartItems={cart} /> : null}
+        </div>
       </header>
       <div className="p-8">
         <ProductList addToCart={addToCart} />
