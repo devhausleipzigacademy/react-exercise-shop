@@ -6,11 +6,13 @@ type Props = {
 
 export function ShoppingCart({ cartItems }: Props) {
   return (
-    <div>
-      <p>Shopping Cart</p>
+    <div className="absolute right-0 top-10 shadow-sm bg-white border border-zinc-400 p-4 w-max">
+      <h2 className="font-semibold underline mb-1">Shopping Cart</h2>
       <ul>
         {cartItems.map((item) => (
-          <li>{item.name}</li>
+          <li key={item.id}>
+            {item.name} - ${item.price} - {item.quantity}
+          </li>
         ))}
       </ul>
     </div>
