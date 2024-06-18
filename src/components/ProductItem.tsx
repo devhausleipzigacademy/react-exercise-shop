@@ -12,7 +12,7 @@ export function ProductItem({ product, addToCart }: Props) {
         <h3>{product.name}</h3>
         <span className="text-xl">{product.price}</span>
       </div>
-      <p>{product.description}</p>
+      <p className="pb-4">{product.description}</p>
       <button
         className="bg-zinc-800 rounded px-4 py-2 text-white"
         onClick={() => addToCart(product)}
